@@ -3,6 +3,7 @@ package ca.pokeyone.tictactoe;
 import ca.pokeyone.tictactoe.states.State;
 import ca.pokeyone.tictactoe.states.StateLoading;
 import ca.pokeyone.tictactoe.states.StateManager;
+import ca.pokeyone.tictactoe.states.StateMenu;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -23,8 +24,6 @@ public class Panel extends JPanel implements Runnable, KeyListener, MouseListene
     //State manager
     private StateManager stateManager;
 
-    //TODO: add resource handler
-
     /**
      * Construct a Panel
      */
@@ -32,6 +31,13 @@ public class Panel extends JPanel implements Runnable, KeyListener, MouseListene
         //initialize the stateManager
         stateManager = new StateManager();
         stateManager.addState(new StateLoading(), Constants.STATE_UID_LOADING);
+        stateManager.addState(new StateMenu("Main Menu",
+                new StateMenu.MenuOption("Play", Constants.STATE_UID_MENU_PLAY),
+                new StateMenu.MenuOption("Exit", Constants.STATE_UID_EXIT)
+        ), Constants.STATE_UID_MENU);
+
+        //TODO: add play menu
+        //TODO: add play state
 
         //make sure the panel gets the input
         setFocusable(true);
