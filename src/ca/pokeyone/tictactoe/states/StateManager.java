@@ -35,14 +35,20 @@ public class StateManager {
      */
     public void addState(State state, long uid){
         //Set the current state to the one added if no states exist
+        boolean newStateManager = false;
         if(states.isEmpty()){
-            currentState = uid;
+            newStateManager = true;
         }
 
         //Make sure we do not over write another state
         if(!states.containsKey(uid)){
             //Add the state
             states.put(uid, state);
+
+            if(newStateManager){
+                currentState = uid;
+                states.get(currentState).onLoad();
+            }
         }else{
             //Output the error
             System.err.println("Could not add state to state manager! Bad UID!");
@@ -67,6 +73,13 @@ public class StateManager {
     public void tick(){
         if(states.containsKey(currentState)){
             states.get(currentState).tick();
+
+            long changeID = states.get(currentState).changeID;
+            if(changeID >= 0L){
+                states.get(currentState).onUnload();
+                currentState = changeID;
+                states.get(currentState).onLoad();
+            }
         }
     }
 }

@@ -26,7 +26,7 @@ public class ImageResource {
      */
     public void load(){
         try {
-            ImageIO.read(file);
+            image = ImageIO.read(file);
         }catch(IOException e){
             e.printStackTrace();
         }

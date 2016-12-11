@@ -1,7 +1,9 @@
 package ca.pokeyone.tictactoe.resources;
 
 import ca.pokeyone.tictactoe.Constants;
+import com.sun.istack.internal.Nullable;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.HashMap;
 
@@ -23,6 +25,19 @@ public class ResourceHandler {
     public static void loadImage(String id){
         if(images.containsKey(id)){
             images.get(id).load();
+        }
+    }
+
+    /**
+     * Gets the image with the given id
+     * @param id The id of the image to return
+     * @return A BufferedImage of the requested ID. May be null if file/image does not exist
+     */
+    public static BufferedImage getImage(String id){
+        if(images.containsKey(id)){
+            return images.get(id).getImage();
+        }else{
+            return null;
         }
     }
 }

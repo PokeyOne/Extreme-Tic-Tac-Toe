@@ -48,7 +48,8 @@ public class Panel extends JPanel implements Runnable, KeyListener, MouseListene
      * Main computation that run every tick
      */
     public void tick(){
-
+        //Redirect to current state
+        stateManager.tick();
     }
 
     @Override
@@ -57,7 +58,8 @@ public class Panel extends JPanel implements Runnable, KeyListener, MouseListene
         g.setColor(Color.BLACK);
         g.fillRect(0, 0, getWidth(), getHeight());
 
-        //TODO: redirect to current state
+        //redirect to current state
+        stateManager.render(g);
     }
 
     public void run(){

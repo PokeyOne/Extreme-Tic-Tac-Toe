@@ -6,7 +6,7 @@ package ca.pokeyone.tictactoe;
 public class Constants {
     //General information about the program
     public static final String VERSION = "ALPHA 0";
-    public static final long BUILD = 2L;
+    public static final long BUILD = 3L;
 
     //Window size
     public static final int WIDTH = 800;

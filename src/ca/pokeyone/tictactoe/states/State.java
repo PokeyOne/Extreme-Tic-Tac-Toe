@@ -8,6 +8,9 @@ import java.awt.*;
 public abstract class State {
     public String displayName;
 
+    //The state manage will the change to the state with this ID. If value is -1L no change will take affect
+    protected long changeID = -1L;
+
     /**
      * Initialize the state with default information.
      * @param displayName the name of the state the user could see and read.
@@ -27,6 +30,20 @@ public abstract class State {
      * Runs all calculations <b>before</b> rendering. Speed determined by app core.
      */
     public abstract void tick();
+
+    /**
+     * Runs when the state comes into view to the user
+     */
+    public void onLoad(){
+
+    }
+
+    /**
+     * Runs when the state goes out of view from the user
+     */
+    public void onUnload(){
+
+    }
 
     /**
      * A handler for when a key is pressed. Should be called by the state manager only.
@@ -50,5 +67,13 @@ public abstract class State {
      */
     protected void keyTyped(int keyCode){
 
+    }
+
+    /**
+     * Flag the state manager to change the state.
+     * @param uid The unique id of the state to change to.
+     */
+    protected void changeState(long uid){
+        changeID = uid;
     }
 }
