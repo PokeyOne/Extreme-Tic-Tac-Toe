@@ -84,21 +84,21 @@ public class Panel extends JPanel implements Runnable, KeyListener, MouseListene
         }
     }
 
-    //TODO: input redirect to state manager
+    //TODO: mouse input redirect to state manager
 
     @Override
     public void keyTyped(KeyEvent e) {
-
+        stateManager.keyTyped(e);
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
-
+        stateManager.keyPressed(e);
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-
+        stateManager.keyReleased(e);
     }
 
     @Override

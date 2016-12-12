@@ -1,6 +1,7 @@
 package ca.pokeyone.tictactoe.states;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.util.HashMap;
 
 /**
@@ -81,5 +82,29 @@ public class StateManager {
                 states.get(currentState).onLoad();
             }
         }
+    }
+
+    /**
+     * A handler for when a key is pressed. Redirects input to the current state.
+     * @param keyEvent key event to get key code from
+     */
+    public void keyPressed(KeyEvent keyEvent){
+        states.get(currentState).keyPressed(keyEvent.getKeyCode());
+    }
+
+    /**
+     * A handler for when a key is released. Redirects input to the current state.
+     * @param keyEvent key event to get key code from
+     */
+    public void keyReleased(KeyEvent keyEvent){
+        states.get(currentState).keyReleased(keyEvent.getKeyCode());
+    }
+
+    /**
+     * A handler for when a key is typed. Redirects input to the current state.
+     * @param keyEvent key event to get key code from
+     */
+    public void keyTyped(KeyEvent keyEvent){
+        states.get(currentState).keyTyped(keyEvent.getKeyCode());
     }
 }
