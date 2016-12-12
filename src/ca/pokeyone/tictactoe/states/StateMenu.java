@@ -1,6 +1,7 @@
 package ca.pokeyone.tictactoe.states;
 
 import ca.pokeyone.tictactoe.Constants;
+import ca.pokeyone.tictactoe.resources.ResourceHandler;
 
 import java.awt.*;
 
@@ -40,6 +41,10 @@ public class StateMenu extends State{
      */
     private MenuOption[] options;
 
+    public static final int BUTTON_WIDTH = 500, //Width of displayed options
+                            BUTTON_HEIGHT = 100, //Height of displayed options
+                            BUTTON_VSPACE = 10; //Vertical space between each option
+
     /**
      * Initialize a new menu with name and options given
      * @param displayName The name that the user could see and read
@@ -53,13 +58,31 @@ public class StateMenu extends State{
 
     @Override
     public void render(Graphics g) {
+        //Set render hints
+        Graphics2D g2d = (Graphics2D)g;
+        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON); //Turn on antialiasing
+
         //clear the background
         g.setColor(Color.WHITE);
         g.fillRect(0, 0, Constants.WIDTH, Constants.HEIGHT);
 
+        //Button rendering start
+        Point renderStart = new Point(Constants.WIDTH/2 - BUTTON_WIDTH/2,
+                Constants.HEIGHT/2 - (options.length * (BUTTON_HEIGHT + BUTTON_VSPACE))/2);
+        //Font to render menu items
+        g.setFont(new Font("Arial", Font.BOLD, BUTTON_HEIGHT - 20));
+
+        //title
+        g.drawImage(ResourceHandler.getImage(Constants.IMAGE_TITLE), renderStart.x, 20, null);
+
         //Render all options
         for(int i = 0; i < options.length; i++){
-            //TODO add render of option
+            int y = renderStart.y + (i * (BUTTON_HEIGHT + BUTTON_VSPACE));
+
+            g.setColor(Color.BLACK);
+            g.fillRect(renderStart.x, y, BUTTON_WIDTH, BUTTON_HEIGHT);
+            g.setColor(Color.WHITE);
+            g.drawString(options[i].name.toUpperCase(), renderStart.x + 20, y + BUTTON_HEIGHT - 20);
         }
     }
 

@@ -26,6 +26,7 @@ public class StateLoading extends State{
         date = new Date();
 
         images.add(Constants.IMAGE_LOGO);
+        images.add(Constants.IMAGE_TITLE);
     }
 
     @Override

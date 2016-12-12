@@ -16,6 +16,7 @@ public class ResourceHandler {
     public static HashMap<String, ImageResource> images = new HashMap<>();
     static {
         images.put(Constants.IMAGE_LOGO, new ImageResource(new File("resources/logo.png")));
+        images.put(Constants.IMAGE_TITLE, new ImageResource(new File("resources/title.png")));
     }
 
     /**

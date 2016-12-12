@@ -5,8 +5,8 @@ package ca.pokeyone.tictactoe;
  */
 public class Constants {
     //General information about the program
-    public static final String VERSION = "ALPHA 1";
-    public static final long BUILD = 5L;
+    public static final String VERSION = "ALPHA 2";
+    public static final long BUILD = 9L;
 
     //Window size
     public static final int WIDTH = 800;
@@ -21,4 +21,5 @@ public class Constants {
 
     //Image IDs
     public static final String IMAGE_LOGO = "logo";
+    public static final String IMAGE_TITLE = "title";
 }
