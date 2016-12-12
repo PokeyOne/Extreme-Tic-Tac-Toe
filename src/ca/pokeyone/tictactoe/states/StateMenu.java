@@ -79,6 +79,7 @@ public class StateMenu extends State{
         for(int i = 0; i < options.length; i++){
             int y = renderStart.y + (i * (BUTTON_HEIGHT + BUTTON_VSPACE));
 
+            //TODO: render indicator for current option
             g.setColor(Color.BLACK);
             g.fillRect(renderStart.x, y, BUTTON_WIDTH, BUTTON_HEIGHT);
             g.setColor(Color.WHITE);
@@ -90,4 +91,7 @@ public class StateMenu extends State{
     public void tick() {
 
     }
+
+    //TODO: Arrow and WASD keys to change option
+    //TODO: Enter to perform action
 }
