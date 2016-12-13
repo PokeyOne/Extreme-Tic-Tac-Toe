@@ -4,6 +4,7 @@ import ca.pokeyone.tictactoe.Constants;
 import ca.pokeyone.tictactoe.resources.ResourceHandler;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 
 /**
  * Displays a menu of options to the user
@@ -41,9 +42,18 @@ public class StateMenu extends State{
      */
     private MenuOption[] options;
 
+    /**
+     * currently selected option
+     */
+    private int currentOption = 0;
+
+    /**
+     * Option rendering dimension constant
+     */
     public static final int BUTTON_WIDTH = 500, //Width of displayed options
                             BUTTON_HEIGHT = 100, //Height of displayed options
-                            BUTTON_VSPACE = 10; //Vertical space between each option
+                            BUTTON_VSPACE = 10, //Vertical space between each option
+                            BUTTON_INDICATOR_WIDTH = 20; //Width of indicator
 
     /**
      * Initialize a new menu with name and options given
@@ -79,11 +89,17 @@ public class StateMenu extends State{
         for(int i = 0; i < options.length; i++){
             int y = renderStart.y + (i * (BUTTON_HEIGHT + BUTTON_VSPACE));
 
-            //TODO: render indicator for current option
+            //Option background
             g.setColor(Color.BLACK);
             g.fillRect(renderStart.x, y, BUTTON_WIDTH, BUTTON_HEIGHT);
+            //Option text
             g.setColor(Color.WHITE);
             g.drawString(options[i].name.toUpperCase(), renderStart.x + 20, y + BUTTON_HEIGHT - 20);
+            //Selection indicator
+            if(currentOption == i) {
+                g.setColor(new Color(0x00FFBB));
+                g.fillRect(renderStart.x - BUTTON_INDICATOR_WIDTH, y, BUTTON_INDICATOR_WIDTH, BUTTON_HEIGHT);
+            }
         }
     }
 
@@ -92,6 +108,43 @@ public class StateMenu extends State{
 
     }
 
-    //TODO: Arrow and WASD keys to change option
-    //TODO: Enter to perform action
+    /**
+     * Adds an integer to the current selected option
+     * @param increment The amount to add to current option
+     */
+    private void incrementCurrentOption(int increment){
+        //Add value of increment
+        currentOption += increment;
+
+        //Make sure inside boundaries
+        if(currentOption >= options.length){
+            currentOption = 0;
+        }else if(currentOption < 0){
+            currentOption = options.length-1;
+        }
+    }
+
+    /**
+     * Performs the action associated with the current option
+     */
+    private void performAction(){
+        changeState(options[currentOption].stateUID);
+    }
+
+    @Override
+    protected void keyPressed(int keyCode) {
+        switch(keyCode){
+            case KeyEvent.VK_W:
+            case KeyEvent.VK_UP:
+                incrementCurrentOption(-1);
+                break;
+            case KeyEvent.VK_S:
+            case KeyEvent.VK_DOWN:
+                incrementCurrentOption(1);
+                break;
+            case KeyEvent.VK_ENTER:
+                performAction();
+                break;
+        }
+    }
 }
