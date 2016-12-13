@@ -27,15 +27,31 @@ public class Panel extends JPanel implements Runnable, KeyListener, MouseListene
     public Panel(){
         //initialize the stateManager
         stateManager = new StateManager();
-        stateManager.addState(new StateExit(), Constants.STATE_UID_EXIT);
-        stateManager.addState(new StateExit(true), Constants.STATE_UID_EXIT_ERROR);
+        //Add loading state
         stateManager.addState(new StateLoading(), Constants.STATE_UID_LOADING);
+        //Add regular exit state
+        stateManager.addState(new StateExit(), Constants.STATE_UID_EXIT);
+        //Add irregular exit state
+        stateManager.addState(new StateExit(true), Constants.STATE_UID_EXIT_ERROR);
+        //Add the main menu
         stateManager.addState(new StateMenu("Main Menu",
-                new StateMenu.MenuOption("Play", Constants.STATE_UID_MENU_PLAY),
+                new StateMenu.MenuOption("Play", Constants.STATE_UID_MENU_MODE),
                 new StateMenu.MenuOption("Exit", Constants.STATE_UID_EXIT)
         ), Constants.STATE_UID_MENU);
+        //Add menu for game board state
+        stateManager.addState(new StateMenu("Mode Menu",
+                new StateMenu.MenuOption("3x3", Constants.STATE_UID_3X3_MENU),
+                new StateMenu.MenuOption("9x9", Constants.STATE_UID_9X9_MENU)
+        ), Constants.STATE_UID_MENU_MODE);
+        //Add opponent menu for 3x3
+        stateManager.addState(new StateMenu("3x3 Opponent Menu",
+                new StateMenu.MenuOption("AI", Constants.STATE_UID_PLAY_AI_3X3)
+        ), Constants.STATE_UID_3X3_MENU);
+        //Add opponent menu for 9x9
+        stateManager.addState(new StateMenu("9x9 Opponent Menu",
+                new StateMenu.MenuOption("AI", Constants.STATE_UID_PLAY_AI_9X9)
+        ), Constants.STATE_UID_9X9_MENU);
 
-        //TODO: add play menu
         //TODO: add play state
 
         //make sure the panel gets the input

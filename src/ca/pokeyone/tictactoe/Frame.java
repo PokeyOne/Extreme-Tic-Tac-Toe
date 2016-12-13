@@ -17,7 +17,7 @@ public class Frame extends JFrame{
         setSize(800, 600);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
-        setTitle("Extreme Tic Tac Toe: " + Constants.VERSION + " (Build " + Constants.BUILD + ")");
+        setTitle("Extreme Tic Tac Toe: " + Constants.VERSION + " (Build " + String.format("%H", Constants.BUILD) + ")");
         setLocationRelativeTo(null);
 
         add(panel);
