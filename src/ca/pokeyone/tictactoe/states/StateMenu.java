@@ -20,7 +20,7 @@ public class StateMenu extends State{
         /**
          * The name of the option that the user sees
          */
-        public String name;
+        private String name;
 
         /**
          * The UID of the state that appears on the activation of the option
@@ -53,6 +53,10 @@ public class StateMenu extends State{
             this.stateUID = stateUID;
             this.soundUID = soundUID;
         }
+
+        public String getName(){
+            return ResourceHandler.localizer.localize(name);
+        }
     }
 
     /**
@@ -79,7 +83,7 @@ public class StateMenu extends State{
      * @param options The options that the user can choose.
      */
     public StateMenu(String displayName, MenuOption... options){
-        super("Menu State: " + displayName);
+        super(displayName);
 
         this.options = options;
     }
@@ -108,7 +112,7 @@ public class StateMenu extends State{
             g.fillRect(renderStart.x, y, BUTTON_WIDTH, BUTTON_HEIGHT);
             //Option text
             g.setColor(Color.WHITE);
-            g.drawString(options[i].name.toUpperCase(), renderStart.x + 20, y + BUTTON_HEIGHT - 20);
+            g.drawString(options[i].getName().toUpperCase(), renderStart.x + 20, y + BUTTON_HEIGHT - 20);
             //Selection indicator
             if(currentOption == i) {
                 g.setColor(new Color(0x00FFBB));

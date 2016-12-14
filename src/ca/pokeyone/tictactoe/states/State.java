@@ -1,12 +1,14 @@
 package ca.pokeyone.tictactoe.states;
 
+import ca.pokeyone.tictactoe.resources.ResourceHandler;
+
 import java.awt.*;
 
 /**
  * A state of the program. Used to process user input and display out put.
  */
 public abstract class State {
-    public String displayName;
+    private String displayName;
 
     //The state manage will the change to the state with this ID. If value is -1L no change will take affect
     protected long changeID = -1L;
@@ -17,7 +19,11 @@ public abstract class State {
      */
     public State(String displayName){
         this.displayName = displayName;
-        System.out.println("[State] Entered the " + displayName);
+        System.out.println("[State] Entered the " + getDisplayName());
+    }
+
+    public String getDisplayName(){
+        return ResourceHandler.localizer.localize(displayName);
     }
 
     /**

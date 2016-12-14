@@ -1,0 +1,21 @@
+//Program Title
+general.title=Extreme Tic Tac Toe
+
+//GUI buttons
+gui.play.name=Play
+gui.exit.name=Exit
+gui.3x3.name=3x3
+gui.9x9.name=9x9
+gui.ai.name=AI
+
+//State names
+state.loading.name=Loading State
+state.play.name=Play State
+state.menu.main.name=Main Menu
+state.menu.mode.name=Mode Menu
+state.menu.opponent.3x3.name=3x3 Opponent Menu
+state.menu.opponent.9x9.name=9x9 Opponent Menu
+
+//Menu names
+menu.mode.title=Choose game mode
+menu.opponent.title=Choose opponent

@@ -13,7 +13,12 @@ public class Puzzle3 extends Puzzle{
     public Puzzle3() {
         //Initialize array
         values = new XOValue[3][3];
-        Arrays.fill(values, XOValue.NONE);
+
+        for(XOValue[] x : values){
+            for(XOValue value : x){
+                value = XOValue.NONE;
+            }
+        }
     }
 
     /**

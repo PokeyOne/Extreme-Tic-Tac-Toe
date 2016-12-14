@@ -19,7 +19,7 @@ public class StatePlay extends State{
     private final OpponentType opponentType;
 
     public StatePlay(PuzzleSize size, OpponentType type){
-        super("Play State");
+        super("state.play.name");
 
         puzzleSize = size;
         opponentType = type;

@@ -1,7 +1,7 @@
 package ca.pokeyone.tictactoe.resources;
 
 import ca.pokeyone.tictactoe.Constants;
-import com.sun.istack.internal.Nullable;
+import ca.pokeyone.tictactoe.localization.Localizer;
 
 import java.awt.image.BufferedImage;
 import java.io.*;
@@ -12,6 +12,11 @@ import java.util.HashMap;
  * completely static.
  */
 public class ResourceHandler {
+
+    /**
+     * Used to localize strings
+     */
+    public static Localizer localizer = new Localizer(new File("resources/lang"));
 
     /**
      * A map of all images to there corresponding UID
@@ -88,6 +93,11 @@ public class ResourceHandler {
         }
     }
 
+    /**
+     * Returns an InputStream of the audio file
+     * @param uid The uid of the audio file
+     * @return InputStream of audio file
+     */
     public static InputStream getAudioStream(long uid){
         try {
             FileInputStream fis = new FileInputStream(getAudioFile(uid));

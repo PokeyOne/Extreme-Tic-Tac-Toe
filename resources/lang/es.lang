@@ -1,0 +1,22 @@
+//Program Title
+general.title=Extremo Tic Tac Toe
+
+//GUI buttons
+gui.play.name=Jugar
+gui.exit.name=Salir
+gui.3x3.name=3x3
+gui.9x9.name=9x9
+//inteligencia artificial
+gui.ai.name=IA
+
+//State names
+state.loading.name=El Estado de Carga
+state.play.name=El Estado de Jugar
+state.menu.main.name=Menú Principal
+state.menu.mode.name=Menú de Modo
+state.menu.opponent.3x3.name=Menú de Adversario para 3x3
+state.menu.opponent.9x9.name=Menú de Adversario para 9x9
+
+//Menu names
+menu.mode.title=Escoger un modo de juego
+menu.opponent.title=Escoger una adversario
