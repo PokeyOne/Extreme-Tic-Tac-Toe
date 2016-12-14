@@ -71,4 +71,34 @@ public class Constants {
      * Game title/logo image UID
      */
     public static final String IMAGE_TITLE = "title";
+
+    //Sound IDs
+    /**
+     * UID for vocal sound "play"
+     */
+    public static final long SOUND_PLAY      = 0L;
+    /**
+     * UID for vocal sound "init"
+     */
+    public static final long SOUND_INIT      = 1L;
+    /**
+     * UID for vocal sound "exit"
+     */
+    public static final long SOUND_EXIT      = 2L;
+    /**
+     * UID for a "hit" sound effect
+     */
+    public static final long SOUND_BUP       = 3L;
+    /**
+     * UID for vocal sound "27 by 27 game"
+     */
+    public static final long SOUND_GAME_27   = 4L;
+    /**
+     * UID for vocal sound "9 by 9 game"
+     */
+    public static final long SOUND_GAME_9    = 5L;
+    /**
+     * UID for vocal sound "3 by 3 game"
+     */
+    public static final long SOUND_GAME_3    = 6L;
 }

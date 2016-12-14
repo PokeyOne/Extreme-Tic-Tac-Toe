@@ -2,6 +2,7 @@ package ca.pokeyone.tictactoe.states;
 
 import ca.pokeyone.tictactoe.Constants;
 import ca.pokeyone.tictactoe.resources.ResourceHandler;
+import ca.pokeyone.tictactoe.resources.sound.SoundPlayer;
 
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -57,6 +58,7 @@ public class StateLoading extends State{
         }else{
             //change to to next state if longer than 5 seconds passed
             if(new Date().getTime() - date.getTime() >= 5000){
+                SoundPlayer.playSound(Constants.SOUND_INIT);
                 changeState(Constants.STATE_UID_MENU);
             }
         }
