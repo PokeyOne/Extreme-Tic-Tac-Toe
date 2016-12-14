@@ -2,6 +2,7 @@ package ca.pokeyone.tictactoe.states;
 
 import ca.pokeyone.tictactoe.Constants;
 import ca.pokeyone.tictactoe.resources.ResourceHandler;
+import ca.pokeyone.tictactoe.resources.sound.SoundPlayer;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -27,6 +28,11 @@ public class StateMenu extends State{
         public long stateUID;
 
         /**
+         * The UID of the sound to play when option activated
+         */
+        public long soundUID = Constants.SOUND_NONE;
+
+        /**
          * Creates a menu option
          * @param name The name of the option that the user sees
          * @param stateUID The UID of the state that appears on the activation of the option
@@ -34,6 +40,18 @@ public class StateMenu extends State{
         public MenuOption(String name, long stateUID){
             this.name = name;
             this.stateUID = stateUID;
+        }
+
+        /**
+         * Creates a menu option with activation sound
+         * @param name The name of the option that the user sees
+         * @param stateUID The UID of the state that appears on the activation of the option
+         * @param soundUID The UID of the sound that plays on the activation of the option
+         */
+        public MenuOption(String name, long stateUID, long soundUID){
+            this.name = name;
+            this.stateUID = stateUID;
+            this.soundUID = soundUID;
         }
     }
 
@@ -128,6 +146,9 @@ public class StateMenu extends State{
      * Performs the action associated with the current option
      */
     private void performAction(){
+        //Play activation sound
+        SoundPlayer.playSound(options[currentOption].soundUID);
+        //Change states
         changeState(options[currentOption].stateUID);
     }
 
@@ -136,13 +157,16 @@ public class StateMenu extends State{
         switch(keyCode){
             case KeyEvent.VK_W:
             case KeyEvent.VK_UP:
+                //Go up an option
                 incrementCurrentOption(-1);
                 break;
             case KeyEvent.VK_S:
             case KeyEvent.VK_DOWN:
+                //Go down an option
                 incrementCurrentOption(1);
                 break;
             case KeyEvent.VK_ENTER:
+                //Activate selected option
                 performAction();
                 break;
         }

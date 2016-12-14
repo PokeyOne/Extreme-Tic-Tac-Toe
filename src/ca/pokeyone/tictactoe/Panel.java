@@ -35,8 +35,8 @@ public class Panel extends JPanel implements Runnable, KeyListener, MouseListene
         stateManager.addState(new StateExit(true), Constants.STATE_UID_EXIT_ERROR);
         //Add the main menu
         stateManager.addState(new StateMenu("Main Menu",
-                new StateMenu.MenuOption("Play", Constants.STATE_UID_MENU_MODE),
-                new StateMenu.MenuOption("Exit", Constants.STATE_UID_EXIT)
+                new StateMenu.MenuOption("Play", Constants.STATE_UID_MENU_MODE, Constants.SOUND_PLAY),
+                new StateMenu.MenuOption("Exit", Constants.STATE_UID_EXIT, Constants.SOUND_EXIT)
         ), Constants.STATE_UID_MENU);
         //Add menu for game board state
         stateManager.addState(new StateMenu("Mode Menu",

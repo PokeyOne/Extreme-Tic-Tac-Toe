@@ -1,5 +1,6 @@
 package ca.pokeyone.tictactoe.resources.sound;
 
+import ca.pokeyone.tictactoe.Constants;
 import ca.pokeyone.tictactoe.resources.ResourceHandler;
 
 import javax.sound.sampled.AudioInputStream;
@@ -19,14 +20,20 @@ public class SoundPlayer {
         System.out.println("SoundPlayer should not be initialized. Everything is static!");
     }
 
+    /**
+     * Plays a sound based on UID provided
+     * @param soundID The UID of the sound to play
+     */
     public static synchronized void playSound(long soundID){
-        try {
-            Clip clip = AudioSystem.getClip();
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(ResourceHandler.getAudioStream(soundID));
-            clip.open(audioInputStream);
-            clip.start();
-        } catch (Exception e) {
-            e.printStackTrace();
+        if(soundID != Constants.SOUND_NONE) {
+            try {
+                Clip clip = AudioSystem.getClip();
+                AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(ResourceHandler.getAudioStream(soundID));
+                clip.open(audioInputStream);
+                clip.start();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 }

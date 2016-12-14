@@ -8,11 +8,11 @@ public class Constants {
     /**
      * The version, in String form, of the program. Incremented with major changes
      */
-    public static final String VERSION = "ALPHA 3";
+    public static final String VERSION = "ALPHA 4";
     /**
      * The build number of the program. Should be incremented every build.
      */
-    public static final long BUILD = 14L;
+    public static final long BUILD = 16L;
 
     //Window size
     /**
@@ -101,4 +101,8 @@ public class Constants {
      * UID for vocal sound "3 by 3 game"
      */
     public static final long SOUND_GAME_3    = 6L;
+    /**
+     * UID for no sound
+     */
+    public static final long SOUND_NONE = -1L;
 }
