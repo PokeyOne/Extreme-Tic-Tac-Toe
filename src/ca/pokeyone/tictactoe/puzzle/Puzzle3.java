@@ -1,29 +1,19 @@
 package ca.pokeyone.tictactoe.puzzle;
 
+import java.util.Arrays;
+
 /**
  * A simple 3x3 tic tac toe puzzle
  */
-public class Puzzle3 {
-
-    /**
-     * Holds the values for the board. Should not be set directly other than <b>play()</b> function
-     */
-    private XOValue[][] values = new XOValue[3][3];
-
-    /**
-     * Weather or not the puzzle is complete
-     */
-    public Winner isComplete = Winner.UNCOMPLETE;
+public class Puzzle3 extends Puzzle{
 
     /**
      * Initialize a blank 3x3 puzzle
      */
     public Puzzle3() {
-        for(XOValue[] col : values){
-            for(XOValue v : col){
-                v = XOValue.NONE;
-            }
-        }
+        //Initialize array
+        values = new XOValue[3][3];
+        Arrays.fill(values, XOValue.NONE);
     }
 
     /**
@@ -36,6 +26,14 @@ public class Puzzle3 {
     public boolean play(int x, int y, XOValue v){
         if(values[x][y] == XOValue.NONE) values[x][y] = v;
         return (checkBoard(x, y) != Winner.UNCOMPLETE);
+    }
+
+    /**
+     * Gets a copy of values
+     * @return 3 by 3 array of XOValue objects
+     */
+    public XOValue[][] getValues(){
+        return values.clone();
     }
 
     /**

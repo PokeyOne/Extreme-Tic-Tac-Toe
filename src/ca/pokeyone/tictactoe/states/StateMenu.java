@@ -86,10 +86,6 @@ public class StateMenu extends State{
 
     @Override
     public void render(Graphics g) {
-        //Set render hints
-        Graphics2D g2d = (Graphics2D)g;
-        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON); //Turn on antialiasing
-
         //clear the background
         g.setColor(Color.WHITE);
         g.fillRect(0, 0, Constants.WIDTH, Constants.HEIGHT);
