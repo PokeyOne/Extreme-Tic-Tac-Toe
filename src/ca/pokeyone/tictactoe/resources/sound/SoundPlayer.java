@@ -25,6 +25,7 @@ public class SoundPlayer {
      * @param soundID The UID of the sound to play
      */
     public static synchronized void playSound(long soundID){
+        //TODO: add sound localization
         if(soundID != Constants.SOUND_NONE) {
             try {
                 Clip clip = AudioSystem.getClip();
