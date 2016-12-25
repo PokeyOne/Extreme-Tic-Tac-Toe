@@ -171,4 +171,9 @@ public class StateMenu extends State{
                 break;
         }
     }
+
+    @Override
+    protected void mouseReleased(Point point){
+        //TODO: click options
+    }
 }
