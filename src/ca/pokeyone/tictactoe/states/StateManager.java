@@ -2,6 +2,7 @@ package ca.pokeyone.tictactoe.states;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 import java.util.HashMap;
 
 /**
@@ -106,5 +107,45 @@ public class StateManager {
      */
     public void keyTyped(KeyEvent keyEvent){
         states.get(currentState).keyTyped(keyEvent.getKeyCode());
+    }
+
+    /**
+     * A handler for when the mouse is clicked. Redirects input to the current state.
+     * @param mouseEvent The MouseEvent of click
+     */
+    public void mouseClicked(MouseEvent mouseEvent) {
+        states.get(currentState).mouseClicked(mouseEvent.getPoint());
+    }
+
+    /**
+     * A handler for when the mouse is pressed. Redirects input to the current state.
+     * @param mouseEvent The MouseEvent of press
+     */
+    public void mousePressed(MouseEvent mouseEvent) {
+        states.get(currentState).mousePressed(mouseEvent.getPoint());
+    }
+
+    /**
+     * A handler for when the mouse is released. Redirects input to the current state.
+     * @param mouseEvent The MouseEvent of release
+     */
+    public void mouseReleased(MouseEvent mouseEvent) {
+        states.get(currentState).mouseReleased(mouseEvent.getPoint());
+    }
+
+    /**
+     * A handler for when the mouse enters screen above frame. Redirects input to the current state.
+     * @param mouseEvent The MouseEvent of enter
+     */
+    public void mouseEntered(MouseEvent mouseEvent) {
+        states.get(currentState).mouseEntered(mouseEvent.getPoint());
+    }
+
+    /**
+     * A handler for when the mouse exits screen above frame. Redirects input to the current state.
+     * @param mouseEvent The MouseEvent of exit
+     */
+    public void mouseExited(MouseEvent mouseEvent) {
+        states.get(currentState).mouseExited(mouseEvent.getPoint());
     }
 }

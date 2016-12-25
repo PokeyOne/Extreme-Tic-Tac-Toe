@@ -34,16 +34,7 @@ public class AI3 extends AI{
         Random random = new Random();
         //Calculated mess-up
         if(random.nextInt(100) < aiDifficulty.getMessUpChance()){
-            //The move to be returned later
-            Move move;
-
-            //Random unique move
-            do {
-                move = new Move(random.nextInt(3), random.nextInt(3));
-            }while(puzzle.getValues()[move.x][move.y] != XOValue.NONE);
-
-            //Return the move generated
-            return move;
+            return randomMove(puzzle);
         }else{ //Real move
             //check rows for almost full
             for (int row = 0; row < 3; row++) {
@@ -71,7 +62,22 @@ public class AI3 extends AI{
         }
 
 
+        //If all else fails
+        return randomMove(puzzle);
+    }
 
-        return null;
+    private Move randomMove(Puzzle3 puzzle){
+        Random random = new Random();
+
+        //The move to be returned later
+        Move move;
+
+        //Random unique move
+        do {
+            move = new Move(random.nextInt(3), random.nextInt(3));
+        }while(puzzle.getValues()[move.x][move.y] != XOValue.NONE);
+
+        //Return the move generated
+        return move;
     }
 }

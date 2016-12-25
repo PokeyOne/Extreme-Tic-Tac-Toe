@@ -76,6 +76,46 @@ public abstract class State {
     }
 
     /**
+     * A handler for when the mouse is clicked. Should be called by the state manager only.
+     * @param point The location of the mouse
+     */
+    protected void mouseClicked(Point point){
+
+    }
+
+    /**
+     * A handler for when the mouse is pressed. Should be called by the state manager only.
+     * @param point The location of the mouse
+     */
+    protected void mousePressed(Point point){
+
+    }
+
+    /**
+     * A handler for when the mouse is released. Should be called by the state manager only.
+     * @param point The location of the mouse
+     */
+    protected void mouseReleased(Point point){
+
+    }
+
+    /**
+     * A handler for when the mouse enters the screen above frame. Should be called by the state manager only.
+     * @param point The location of the mouse
+     */
+    protected void mouseEntered(Point point){
+
+    }
+
+    /**
+     * A handler for when the mouse exits the screen above frame. Should be called by the state manager only.
+     * @param point The location of the mouse
+     */
+    protected void mouseExited(Point point){
+
+    }
+
+    /**
      * Flag the state manager to change the state.
      * @param uid The unique id of the state to change to.
      */

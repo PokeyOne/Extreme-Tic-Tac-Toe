@@ -64,7 +64,7 @@ public class Panel extends JPanel implements Runnable, KeyListener, MouseListene
         //Add 3x3 AI Play State
         stateManager.addState(new StatePlay(PuzzleSize.THREE, OpponentType.AI), Constants.STATE_UID_PLAY_AI_3X3);
 
-        //TODO: add play state
+        //TODO: add other play states
 
         //make sure the panel gets the input
         setFocusable(true);
@@ -115,8 +115,6 @@ public class Panel extends JPanel implements Runnable, KeyListener, MouseListene
         }
     }
 
-    //TODO: mouse input redirect to state manager
-
     @Override
     public void keyTyped(KeyEvent e) {
         stateManager.keyTyped(e);
@@ -134,26 +132,26 @@ public class Panel extends JPanel implements Runnable, KeyListener, MouseListene
 
     @Override
     public void mouseClicked(MouseEvent e) {
-
+        stateManager.mouseClicked(e);
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-
+        stateManager.mousePressed(e);
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-
+        stateManager.mouseReleased(e);
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-
+        stateManager.mouseEntered(e);
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-
+        stateManager.mouseExited(e);
     }
 }
