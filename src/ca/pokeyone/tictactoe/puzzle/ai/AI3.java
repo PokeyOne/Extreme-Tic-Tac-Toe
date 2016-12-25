@@ -17,7 +17,7 @@ public class AI3 {
     public Point getMove(){
         //Initialize a random
         Random random = new Random();
-        //Calculated fuck-up
+        //Calculated mess-up
         if(random.nextInt(100) < aiDifficulty.getMessUpChance()){
             //Random move
             return new Point(random.nextInt(3), random.nextInt(3));
