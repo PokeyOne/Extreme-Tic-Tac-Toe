@@ -12,7 +12,7 @@ import java.util.HashMap;
 public class Localizer {
 
     private File folder;
-    private String currentLanguage = Constants.LANGUAGE_SPANISH;
+    private String currentLanguage = Constants.LANGUAGE_ENGLISH;
     private HashMap<String, Locale> langs = new HashMap<>();
 
     /**
