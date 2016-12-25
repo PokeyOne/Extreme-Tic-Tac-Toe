@@ -68,6 +68,13 @@ public class StatePlay extends State{
      * @param g The Graphics object to render to
      */
     private void drawBox3(int x, int y, int size, XOValue[][] values, Graphics g){
+        //TODO: make work for all sizes
+
+        if(values == null) {
+            System.err.println("Null values for box render");
+            return;
+        }
+
         //Colour
         g.setColor(Color.BLACK);
 
@@ -79,5 +86,15 @@ public class StatePlay extends State{
         g.drawLine(x + size*2/3, y, x + size*2/3, y + size);
         g.drawLine(x, y + size/3, x + size, y + size/3);
         g.drawLine(x, y + size*2/3, x + size, y + size*2/3);
+
+        //Values
+        for(int ix = 0; ix < values.length; ix++){
+            for(int iy = 0; iy < values[0].length; iy++){
+                if(values[ix][iy] != null && values[ix][iy] != XOValue.NONE){
+                    g.setFont(new Font("Arial", Font.BOLD, (int)(size*0.9)));
+                    g.drawString(values[ix][iy].getString(), x + (size/3 + size/15) * ix, y + (size/3 + size/15) * iy);
+                }
+            }
+        }
     }
 }

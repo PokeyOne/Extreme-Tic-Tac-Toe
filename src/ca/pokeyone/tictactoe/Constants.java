@@ -12,7 +12,7 @@ public class Constants {
     /**
      * The build number of the program. Should be incremented every build.
      */
-    public static final long BUILD = 23L;
+    public static final long BUILD = 25L;
 
     //Window size
     /**

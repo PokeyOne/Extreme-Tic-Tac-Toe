@@ -17,6 +17,9 @@ public class RectUtil {
      * @return True if the Point given is inside the Rectangle
      */
     public static boolean isInside(Point point, Rectangle rectangle){
+        System.out.println("Point is " + point.x + " " + point.y);
+        System.out.println("Rectangle is at " + rectangle.x + " " + rectangle.y + " and size of " + rectangle.width + " " + rectangle.height);
+
         if(point.x > rectangle.x && point.y > rectangle.y){
             if(point.x < rectangle.x + StateMenu.BUTTON_WIDTH && point.x < rectangle.x + StateMenu.BUTTON_HEIGHT){
                 return true;

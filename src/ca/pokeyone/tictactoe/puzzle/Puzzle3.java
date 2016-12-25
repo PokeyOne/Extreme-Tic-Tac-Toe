@@ -14,11 +14,14 @@ public class Puzzle3 extends Puzzle{
         //Initialize array
         values = new XOValue[3][3];
 
-        for(XOValue[] x : values){
-            for(XOValue value : x){
-                value = XOValue.NONE;
+        for(int x = 0; x < 3; x++){
+            for(int y = 0; y < 3; y++){
+                values[x][y] = XOValue.NONE;
             }
         }
+
+        //TODO: remove following line after debugging
+        values[0][0] = XOValue.X;
     }
 
     /**
