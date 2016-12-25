@@ -1,8 +1,7 @@
 package ca.pokeyone.tictactoe.puzzle.ai;
 
 import ca.pokeyone.tictactoe.puzzle.Puzzle;
-
-import java.awt.*;
+import ca.pokeyone.tictactoe.puzzle.Move;
 
 /**
  * Created by pokeyone on 2016-12-16.
@@ -15,5 +14,5 @@ public abstract class AI {
         aiDifficulty = difficulty;
     }
 
-    public abstract Point getMove(Puzzle puzzle);
+    public abstract Move getMove(Puzzle puzzle);
 }

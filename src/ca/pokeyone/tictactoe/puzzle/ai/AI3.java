@@ -1,5 +1,6 @@
 package ca.pokeyone.tictactoe.puzzle.ai;
 
+import ca.pokeyone.tictactoe.puzzle.Move;
 import ca.pokeyone.tictactoe.puzzle.Puzzle;
 import ca.pokeyone.tictactoe.puzzle.Puzzle3;
 import ca.pokeyone.tictactoe.puzzle.XOValue;
@@ -20,7 +21,7 @@ public class AI3 extends AI{
         super(difficulty);
     }
 
-    public Point getMove(Puzzle puzzle){
+    public Move getMove(Puzzle puzzle){
         if(puzzle.getClass() == Puzzle3.class){
             return getMove((Puzzle3)puzzle);
         }else{
@@ -28,22 +29,26 @@ public class AI3 extends AI{
         }
     }
 
-    public Point getMove(Puzzle3 puzzle){
+    public Move getMove(Puzzle3 puzzle){
         //Initialize a random
         Random random = new Random();
         //Calculated mess-up
         if(random.nextInt(100) < aiDifficulty.getMessUpChance()){
-            //Random move
-            Point point = new Point(random.nextInt(3), random.nextInt(3));
+            //The move to be returned later
+            Move move;
 
-            //check point isn't already set
+            //Random unique move
+            do {
+                move = new Move(random.nextInt(3), random.nextInt(3));
+            }while(puzzle.getValues()[move.x][move.y] != XOValue.NONE);
 
-            return point;
+            //Return the move generated
+            return move;
         }else{ //Real move
             //check rows for almost full
             for (int row = 0; row < 3; row++) {
                 int count = 0;
-                Point lastEmpty = new Point(-1, -1);
+                Move lastEmpty = new Move(-1, -1);
 
                 for (int i = 0; i < 3; i++) {
                     switch (puzzle.getValues()[row][i]){
@@ -54,7 +59,7 @@ public class AI3 extends AI{
                             count--;
                             break;
                         case NONE:
-                            lastEmpty = new Point(row, i);
+                            lastEmpty = new Move(row, i);
                             break;
                     }
                 }
