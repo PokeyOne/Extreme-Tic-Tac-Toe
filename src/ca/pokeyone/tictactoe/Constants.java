@@ -8,11 +8,11 @@ public class Constants {
     /**
      * The version, in String form, of the program. Incremented with major changes
      */
-    public static final String VERSION = "ALPHA 5";
+    public static final String VERSION = "ALPHA 6";
     /**
      * The build number of the program. Should be incremented every build.
      */
-    public static final long BUILD = 22L;
+    public static final long BUILD = 23L;
 
     //Window size
     /**

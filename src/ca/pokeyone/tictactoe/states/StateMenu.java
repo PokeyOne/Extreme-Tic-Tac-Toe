@@ -3,6 +3,7 @@ package ca.pokeyone.tictactoe.states;
 import ca.pokeyone.tictactoe.Constants;
 import ca.pokeyone.tictactoe.resources.ResourceHandler;
 import ca.pokeyone.tictactoe.resources.sound.SoundPlayer;
+import ca.pokeyone.utility.RectUtil;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -11,6 +12,14 @@ import java.awt.event.KeyEvent;
  * Displays a menu of options to the user
  */
 public class StateMenu extends State{
+
+    /**
+     * Option rendering dimension constant
+     */
+    public static final int BUTTON_WIDTH = 500, //Width of displayed options
+            BUTTON_HEIGHT = 100, //Height of displayed options
+            BUTTON_VSPACE = 10, //Vertical space between each option
+            BUTTON_INDICATOR_WIDTH = 20; //Width of indicator
 
     /**
      * An option for the menu
@@ -70,12 +79,9 @@ public class StateMenu extends State{
     private int currentOption = 0;
 
     /**
-     * Option rendering dimension constant
+     * The start of where to render the buttons
      */
-    public static final int BUTTON_WIDTH = 500, //Width of displayed options
-                            BUTTON_HEIGHT = 100, //Height of displayed options
-                            BUTTON_VSPACE = 10, //Vertical space between each option
-                            BUTTON_INDICATOR_WIDTH = 20; //Width of indicator
+    private Point renderStart;
 
     /**
      * Initialize a new menu with name and options given
@@ -86,6 +92,9 @@ public class StateMenu extends State{
         super(displayName);
 
         this.options = options;
+
+        renderStart = new Point(Constants.WIDTH/2 - BUTTON_WIDTH/2,
+                Constants.HEIGHT/2 - (options.length * (BUTTON_HEIGHT + BUTTON_VSPACE))/2);
     }
 
     @Override
@@ -94,9 +103,6 @@ public class StateMenu extends State{
         g.setColor(Color.WHITE);
         g.fillRect(0, 0, Constants.WIDTH, Constants.HEIGHT);
 
-        //Button rendering start
-        Point renderStart = new Point(Constants.WIDTH/2 - BUTTON_WIDTH/2,
-                Constants.HEIGHT/2 - (options.length * (BUTTON_HEIGHT + BUTTON_VSPACE))/2);
         //Font to render menu items
         g.setFont(new Font("Arial", Font.BOLD, BUTTON_HEIGHT - 20));
 
@@ -152,6 +158,16 @@ public class StateMenu extends State{
         changeState(options[currentOption].stateUID);
     }
 
+    /**
+     * Performs the action associated with the specified option
+     */
+    private void performAction(int index){
+        //Play activation sound
+        SoundPlayer.playSound(options[index].soundUID);
+        //Change states
+        changeState(options[index].stateUID);
+    }
+
     @Override
     protected void keyPressed(int keyCode) {
         switch(keyCode){
@@ -174,6 +190,17 @@ public class StateMenu extends State{
 
     @Override
     protected void mouseReleased(Point point){
-        //TODO: click options
+        //Check each option for a collision
+        for(int i = 0; i < options.length; i++) {
+            //Create a rectangle representation of the button
+            Rectangle rectangle = new Rectangle(renderStart.x, renderStart.y + (BUTTON_HEIGHT + BUTTON_VSPACE) * i,
+                    BUTTON_WIDTH, BUTTON_HEIGHT);
+
+            //Check if the click is inside the button
+            if(RectUtil.isInside(point, rectangle)){
+                //Activate the clicked option
+                performAction(i);
+            }
+        }
     }
 }
