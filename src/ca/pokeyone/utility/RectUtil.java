@@ -21,8 +21,8 @@ public class RectUtil {
         System.out.println("Point is " + point.x + " " + point.y);
         System.out.println("Rectangle is at " + rectangle.x + " " + rectangle.y + " and size of " + rectangle.width + " " + rectangle.height);
 
-        if(point.x > rectangle.x && point.y > rectangle.y){
-            if(point.x < rectangle.x + StateMenu.BUTTON_WIDTH && point.x < rectangle.x + StateMenu.BUTTON_HEIGHT){
+        if(point.x >= rectangle.x && point.y >= rectangle.y){
+            if(point.x <= rectangle.x + rectangle.width && point.y <= rectangle.y + rectangle.height){
                 return true;
             }
         }
