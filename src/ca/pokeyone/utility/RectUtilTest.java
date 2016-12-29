@@ -10,7 +10,7 @@ import java.util.Random;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Created by pokeyone on 2016-12-28.
+ * Test the RectUtil class
  */
 public class RectUtilTest {
 
