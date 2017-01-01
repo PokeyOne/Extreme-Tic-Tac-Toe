@@ -1,7 +1,7 @@
 package ca.pokeyone.tictactoe.states;
 
 import ca.pokeyone.graphics.GraphicsHelper;
-import ca.pokeyone.tictactoe.Constants;
+import ca.pokeyone.tictactoe.*;
 import ca.pokeyone.tictactoe.puzzle.*;
 
 import java.awt.*;
@@ -91,8 +91,13 @@ public class StatePlay extends State{
         for(int ix = 0; ix < values.length; ix++){
             for(int iy = 0; iy < values[0].length; iy++){
                 if(values[ix][iy] != null && values[ix][iy] != XOValue.NONE){
-                    g.setFont(new Font("Arial", Font.BOLD, (int)(size*0.9)));
-                    g.drawString(values[ix][iy].getString(), x + (size/3 + size/15) * ix, y + (size/3 + size/15) * iy);
+                    int xoffset = 0;
+
+                    g.setFont(new Font("Arial", Font.BOLD, (int)(size*0.4)));
+                    if(values[ix][iy] == XOValue.O){
+                        xoffset = -10;
+                    }
+                    g.drawString(values[ix][iy].getString(), x + (size/3) * ix + size/30 + xoffset, y + (size/3) * (iy + 1) - size/35);
                 }
             }
         }

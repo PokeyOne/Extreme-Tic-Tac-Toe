@@ -19,9 +19,6 @@ public class Puzzle3 extends Puzzle{
                 values[x][y] = XOValue.NONE;
             }
         }
-
-        //TODO: remove following line after debugging
-        values[0][0] = XOValue.X;
     }
 
     /**
